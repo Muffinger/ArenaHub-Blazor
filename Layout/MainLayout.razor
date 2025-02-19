@@ -1,0 +1,33 @@
+﻿@inherits LayoutComponentBase
+
+<div class="app-container">
+    <!-- Header -->
+    <header>
+        <h1>Arena Hub - Blazor WebAssembly</h1>
+        <button @onclick="TestSpeed">Test</button>
+        <button @onclick="ResetLogs">Reset Logs</button>
+        <button @onclick="ExitApp">Close</button>
+    </header>
+
+    <!-- Hauptbereich mit 3 Spalten -->
+    <div class="main-content">
+        <div class="column">
+            <h3>Ports</h3>
+            <Ports />
+        </div>
+        <div class="column">
+            <h3>Settings</h3>
+            <Settings />
+        </div>
+        <div class="column">
+            <h3>Logs</h3>
+            <Logs />
+        </div>
+    </div>
+</div>
+
+@code {
+    private void TestSpeed() => Console.WriteLine("Test Speed clicked!");
+    private void ResetLogs() => Console.WriteLine("Reset Logs clicked!");
+    private void ExitApp() => Console.WriteLine("Exit clicked!");
+}

@@ -1,0 +1,21 @@
+﻿@page "/logs"
+
+<h3>Logs</h3>
+
+<TabSet>
+    <Tab Title="Log Console">
+        <pre>@logMessages</pre>
+    </Tab>
+    <Tab Title="Input Values">
+        <pre>@inputValues</pre>
+    </Tab>
+    <Tab Title="Output Values">
+        <pre>@outputValues</pre>
+    </Tab>
+</TabSet>
+
+@code {
+    private string logMessages = "Log started...\n";
+    private string inputValues = "No input data.\n";
+    private string outputValues = "No output data.\n";
+}

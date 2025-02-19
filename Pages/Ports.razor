@@ -1,0 +1,48 @@
+﻿@page "/ports"
+
+<h3>COM-Port-Zuweisung</h3>
+
+<table>
+    <thead>
+        <tr>
+            <th>Port Name</th>
+            <th>COM-Port</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var port in Ports)
+        {
+            <tr>
+                <td>@port.Name</td>
+                <td>
+                    <select @bind="port.SelectedPort">
+                        <option value="">-- Select Port --</option>
+                        @foreach (var availablePort in AvailablePorts)
+                        {
+                            <option value="@availablePort">@availablePort</option>
+                        }
+                    </select>
+                </td>
+                <td>@port.Status</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@code {
+    private List<string> AvailablePorts = new List<string> { "COM1", "COM2", "COM3" };
+    private List<PortViewModel> Ports = new List<PortViewModel>
+    {
+        new PortViewModel { Name = "Input 1" },
+        new PortViewModel { Name = "Input 2" },
+        new PortViewModel { Name = "Output Display" }
+    };
+
+    private class PortViewModel
+    {
+        public string Name { get; set; }
+        public string SelectedPort { get; set; }
+        public string Status => string.IsNullOrEmpty(SelectedPort) ? "Disconnected" : "Connected";
+    }
+}
