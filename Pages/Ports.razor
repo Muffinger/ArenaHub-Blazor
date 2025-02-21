@@ -1,6 +1,7 @@
 ﻿@page "/ports"
 
 <h3>COM-Port-Zuweisung</h3>
+<button @onclick="ConnectToSerial">Connect to Serial</button>
 
 <table>
     <thead>
@@ -11,7 +12,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var port in Ports)
+        @foreach (var port in PortList)
         {
             <tr>
                 <td>@port.Name</td>
@@ -32,12 +33,14 @@
 
 @code {
     private List<string> AvailablePorts = new List<string> { "COM1", "COM2", "COM3" };
-    private List<PortViewModel> Ports = new List<PortViewModel>
+    private List<PortViewModel> PortList = new List<PortViewModel>
     {
         new PortViewModel { Name = "Input 1" },
         new PortViewModel { Name = "Input 2" },
         new PortViewModel { Name = "Output Display" }
     };
+
+    private async Task ConnectToSerial() => await JS.InvokeVoidAsync("connectSerial");
 
     private class PortViewModel
     {

@@ -27,7 +27,7 @@
 </div>
 
 @code {
-    private void TestSpeed() => Console.WriteLine("Test Speed clicked!");
-    private void ResetLogs() => Console.WriteLine("Reset Logs clicked!");
-    private void ExitApp() => Console.WriteLine("Exit clicked!");
+    private async Task TestSpeed() => await JS.InvokeVoidAsync("sendSerialData", "TEST");
+    private async Task ResetLogs() => Console.WriteLine("Reset Logs clicked!");
+    private async Task ExitApp() => Console.WriteLine("Exit clicked!");
 }
