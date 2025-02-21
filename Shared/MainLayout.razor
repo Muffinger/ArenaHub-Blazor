@@ -1,4 +1,6 @@
 ﻿@inherits LayoutComponentBase
+@inject IJSRuntime JS
+
 
 <div class="app-container">
     <!-- Header -->
@@ -27,7 +29,9 @@
 </div>
 
 @code {
-    private async Task TestSpeed() => await JS.InvokeVoidAsync("sendSerialData", "TEST");
+    @code {
+        private async Task TestSpeed() => await JS.InvokeVoidAsync("sendSerialData", "TEST");
+    }
     private async Task ResetLogs() => Console.WriteLine("Reset Logs clicked!");
     private async Task ExitApp() => Console.WriteLine("Exit clicked!");
 }

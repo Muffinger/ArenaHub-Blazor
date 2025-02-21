@@ -40,7 +40,11 @@
         new PortViewModel { Name = "Output Display" }
     };
 
-    private async Task ConnectToSerial() => await JS.InvokeVoidAsync("connectSerial");
+    @inject IJSRuntime JS
+
+    @code {
+        private async Task ConnectToSerial() => await JS.InvokeVoidAsync("connectSerial");
+    }
 
     private class PortViewModel
     {
